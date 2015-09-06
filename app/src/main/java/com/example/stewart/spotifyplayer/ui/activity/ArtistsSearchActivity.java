@@ -57,11 +57,14 @@ public class ArtistsSearchActivity extends AppCompatActivity {
         artistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Artist artist = mArtistList.get(position);
-                Intent spotifyPlayerIntent = new Intent(getApplicationContext(), TrackPlayerActivity.class);
-                spotifyPlayerIntent.putExtra(Value.ARTIST_ID, artist.getId());
-                spotifyPlayerIntent.putExtra(Value.ARTIST_NAME, artist.getName());
-                startActivity(spotifyPlayerIntent);
+//                Artist artist = mArtistList.get(position);
+//                Intent spotifyPlayerIntent = new Intent(getApplicationContext(), TrackPlayerActivity.class);
+//                spotifyPlayerIntent.putExtra(Value.ARTIST_ID, artist.getId());
+//                spotifyPlayerIntent.putExtra(Value.ARTIST_NAME, artist.getName());
+//                startActivity(spotifyPlayerIntent);
+//
+                Intent loginIntent = new Intent(getApplicationContext(), SpotifyLoginActivity.class);
+                startActivity(loginIntent);
             }
         });
     }

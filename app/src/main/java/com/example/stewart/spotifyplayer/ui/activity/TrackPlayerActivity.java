@@ -123,9 +123,9 @@ public class TrackPlayerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(mMediaPlayer.isPlaying()){
                     mMediaPlayer.pause();
-                    mPlayPauseImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_play_arrow_black_48dp));
+//                    mPlayPauseImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_play_arrow_black_48dp));
                 } else {
-                    if()
+
                 }
                 togglePlayPause();
             }
