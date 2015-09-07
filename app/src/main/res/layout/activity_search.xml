@@ -9,12 +9,14 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:id="@+id/search_edit_text"
+        android:hint="@string/artist_search"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/search_button" />
 
     <Button
         android:layout_width="96dp"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:layout_alignParentRight="true"
         android:id="@id/search_button"
         android:text="@string/search" />

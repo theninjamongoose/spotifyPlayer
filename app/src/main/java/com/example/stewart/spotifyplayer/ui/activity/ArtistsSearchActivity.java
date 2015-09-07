@@ -36,6 +36,7 @@ public class ArtistsSearchActivity extends AppCompatActivity {
     private EditText mSearchEditText;
 
     private static final String TAG = "ArtistsSearchActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,27 +45,24 @@ public class ArtistsSearchActivity extends AppCompatActivity {
     }
 
     private void init() {
-        mArtistList = new ArrayList<Artist>();
+        mArtistList = new ArrayList<>();
         initSearchEditText();
         initSearchButton();
         initArtistListView();
     }
 
     private void initArtistListView() {
-        ListView artistListView = (ListView)findViewById(R.id.artist_list_view);
+        ListView artistListView = (ListView) findViewById(R.id.artist_list_view);
         mArtistAdapter = new ArtistAdapter(ArtistsSearchActivity.this, mArtistList);
         artistListView.setAdapter(mArtistAdapter);
         artistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Artist artist = mArtistList.get(position);
-//                Intent spotifyPlayerIntent = new Intent(getApplicationContext(), TrackPlayerActivity.class);
-//                spotifyPlayerIntent.putExtra(Value.ARTIST_ID, artist.getId());
-//                spotifyPlayerIntent.putExtra(Value.ARTIST_NAME, artist.getName());
-//                startActivity(spotifyPlayerIntent);
-//
-                Intent loginIntent = new Intent(getApplicationContext(), SpotifyLoginActivity.class);
-                startActivity(loginIntent);
+                Artist artist = mArtistList.get(position);
+                Intent spotifyPlayerIntent = new Intent(getApplicationContext(), TrackPlayerActivity.class);
+                spotifyPlayerIntent.putExtra(Value.ARTIST_ID, artist.getId());
+                spotifyPlayerIntent.putExtra(Value.ARTIST_NAME, artist.getName());
+                startActivity(spotifyPlayerIntent);
             }
         });
     }
@@ -87,17 +85,15 @@ public class ArtistsSearchActivity extends AppCompatActivity {
         view.setEnabled(true);
     }
 
-
-
     private void initSearchEditText() {
-        mSearchEditText   = (EditText)findViewById(R.id.search_edit_text);
+        mSearchEditText = (EditText) findViewById(R.id.search_edit_text);
         //set filter to ignore user return press and search instead
         mSearchEditText.setFilters(new InputFilter[]{
                 new InputFilter() {
                     @Override
                     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                         for (int i = start; i < end; i++) {
-                            if (source.length()>0 && source.subSequence(source.length() - 1, source.length()).toString().equalsIgnoreCase("\n")) {
+                            if (source.length() > 0 && source.subSequence(source.length() - 1, source.length()).toString().equalsIgnoreCase("\n")) {
                                 if (dest.length() > 0) {
                                     searchForArtistsLike(dest.toString());
                                     clearViewFocus(mSearchEditText);
@@ -119,6 +115,7 @@ public class ArtistsSearchActivity extends AppCompatActivity {
             public void success(ArtistsResultParent artistsResultParent, Response response) {
                 loadArtists(artistsResultParent.getArtistsDetail().getArtists());
             }
+
             @Override
             public void failure(RetrofitError error) {
                 Log.d(TAG, "Error: " + error);

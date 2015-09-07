@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ui.activity.ArtistsSearchActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,17 +21,13 @@
         </activity>
         <activity
             android:name=".ui.activity.TrackPlayerActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_spotify_player" >
-        </activity>
-        <activity
-            android:name=".ui.activity.SpotifyLoginActivity"
-            android:label="@string/title_activity_spotify_login" >
-        </activity>
 
+        </activity>
         <activity
             android:name="com.spotify.sdk.android.authentication.LoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -42,6 +39,7 @@
                     android:host="callback"
                     android:scheme="android-login"/>
             </intent-filter>
+
         </activity>
 
     </application>

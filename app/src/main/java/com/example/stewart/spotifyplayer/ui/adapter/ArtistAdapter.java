@@ -20,7 +20,6 @@ import java.util.List;
 //http://developer.android.com/training/improving-layouts/smooth-scrolling.html#ViewHolder
 public class ArtistAdapter extends BaseAdapter {
 
-
     private Context mContext;
     private List<Artist> mArtists;
 
@@ -28,9 +27,6 @@ public class ArtistAdapter extends BaseAdapter {
         mContext = context;
         mArtists = artists;
     }
-
-
-
 
     @Override
     public int getCount() {
@@ -41,8 +37,6 @@ public class ArtistAdapter extends BaseAdapter {
     public Artist getItem(int position) {
         return mArtists.get(position);
     }
-
-
 
     @Override
     public long getItemId(int position) {

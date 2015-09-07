@@ -1,7 +1,5 @@
 package com.example.stewart.spotifyplayer.util;
 
-import android.telephony.TelephonyManager;
-
 /**
  * Created by sstew5 on 9/5/15.
  */

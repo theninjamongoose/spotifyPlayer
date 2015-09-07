@@ -30,7 +30,6 @@ public class TrackAdapter extends BaseAdapter {
         selectedItemIndex = 0;
     }
 
-
     @Override
     public int getCount() {
         return mTracks.size();
@@ -60,7 +59,7 @@ public class TrackAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        if(position == selectedItemIndex){
+        if (position == selectedItemIndex) {
             selectTrack(convertView, position);
         } else {
             unSelectTrack(convertView);
