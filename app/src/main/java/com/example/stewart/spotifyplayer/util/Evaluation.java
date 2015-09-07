@@ -12,22 +12,18 @@ import java.util.List;
 /**
  * Created by sstew5 on 9/4/15.
  */
-public enum Operation {
+public enum Evaluation {
     INSTANCE;
     private final Image EMPTY_IMAGE = new Image();
 
-    public Image getOptimalImage(List<Image> images) {
-        //if no images are in the list, return an empty image, causing Picasso to choose default image
+    /**
+     * Find smallest square image in a list
+     * @param images
+     * @return smallest square image or and empty image for picasso to default later
+     */
+    public Image getSmallestSquareImage(List<Image> images) {
         if (images.size() == 0) {
             return EMPTY_IMAGE;
-        } else {
-            return getSmallestSquareImage(images);
-        }
-    }
-
-    private Image getSmallestSquareImage(List<Image> images) {
-        if (images.size() == 0) {
-            throw new IllegalArgumentException("Attempting to get Smallest Image of an Empty Image list");
         }
         Iterator<Image> imageIterator = images.iterator();
         Image smallestImage = null;
@@ -50,13 +46,20 @@ public enum Operation {
         if (smallestImage == null) {
             return imageToCompare;
         }
+        //return the smallest of the two images
         return smallestImage.getHeight() + smallestImage.getWidth() <
                 imageToCompare.getHeight() + imageToCompare.getWidth() ?
                 smallestImage : imageToCompare;
     }
 
+    /**
+     * Considered square if values are greater then 0 and equal
+     * @param compareHeight
+     * @param compareWidth
+     * @return
+     */
     private boolean isSquare(int compareHeight, int compareWidth) {
-        if (compareHeight > 0 && compareWidth > 0 && compareHeight == compareWidth) {
+        if (compareHeight > 0 && compareHeight == compareWidth) {
             return true;
         } else {
             return false;

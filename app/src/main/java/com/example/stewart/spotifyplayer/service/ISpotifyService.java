@@ -13,12 +13,23 @@ import retrofit.http.Query;
  */
 public interface ISpotifyService {
 
+    /**
+     * Search for artists like the search term
+     * @param searchTerm search term to be used
+     * @param callback callback to return response to
+     */
     @GET("/v1/search?type=artist")
-    void searchArtists(@Query("q") String searchTerm,
+    void getArtitsLike(@Query("q") String searchTerm,
                        Callback<ArtistsResultParent> callback);
 
+    /**
+     * Gets the artists top tracks
+     * @param artistId id of the artist
+     * @param countryIso top tracks are country specific
+     * @param callback callback to return response to
+     */
     @GET("/v1/artists/{id}/top-tracks")
-    void searchArtistTopHits(@Path("id") String artistId, @Query("country") String countryIso,
-                             Callback<TopSongs> callback);
+    void getArtistTopHits(@Path("id") String artistId, @Query("country") String countryIso,
+                          Callback<TopSongs> callback);
 
 }

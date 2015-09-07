@@ -40,7 +40,7 @@ public class ArtistsSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_artist_search);
         init();
     }
 
@@ -58,13 +58,16 @@ public class ArtistsSearchActivity extends AppCompatActivity {
         artistListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Artist artist = mArtistList.get(position);
-                Intent spotifyPlayerIntent = new Intent(getApplicationContext(), TrackPlayerActivity.class);
-                spotifyPlayerIntent.putExtra(Value.ARTIST_ID, artist.getId());
-                spotifyPlayerIntent.putExtra(Value.ARTIST_NAME, artist.getName());
-                startActivity(spotifyPlayerIntent);
+                startTrackPlayer(mArtistList.get(position));
             }
         });
+    }
+
+    private void startTrackPlayer(Artist artist) {
+        Intent spotifyPlayerIntent = new Intent(getApplicationContext(), TrackPlayerActivity.class);
+        spotifyPlayerIntent.putExtra(Value.ARTIST_ID, artist.getId());
+        spotifyPlayerIntent.putExtra(Value.ARTIST_NAME, artist.getName());
+        startActivity(spotifyPlayerIntent);
     }
 
     private void initSearchButton() {
@@ -80,6 +83,10 @@ public class ArtistsSearchActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * used to hide keyboard when view is focused
+     * @param view
+     */
     private void clearViewFocus(View view) {
         view.setEnabled(false);
         view.setEnabled(true);
@@ -109,8 +116,8 @@ public class ArtistsSearchActivity extends AppCompatActivity {
     }
 
     private void searchForArtistsLike(String searchTerm) {
-        ISpotifyService spotifyService = ServiceTool.INSTANCE.getService();
-        spotifyService.searchArtists(searchTerm, new Callback<ArtistsResultParent>() {
+        ISpotifyService spotifyService = ServiceTool.INSTANCE.getSpotifyService();
+        spotifyService.getArtitsLike(searchTerm, new Callback<ArtistsResultParent>() {
             @Override
             public void success(ArtistsResultParent artistsResultParent, Response response) {
                 loadArtists(artistsResultParent.getArtistsDetail().getArtists());

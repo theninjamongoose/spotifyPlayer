@@ -5,4 +5,7 @@
     <string name="title_activity_spotify_player">SpotifyPlayer</string>
     <string name="title_activity_spotify_login">SpotifyLoginActivity</string>
     <string name="artist_search">Artist Search</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="play_again_prompt">End of Playlist, Listen Again?</string>
 </resources>

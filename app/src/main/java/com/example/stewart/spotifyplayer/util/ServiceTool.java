@@ -10,9 +10,9 @@ import retrofit.RestAdapter;
 public enum ServiceTool {
     INSTANCE;
     private final RestAdapter REST_ADAPTER = new RestAdapter.Builder().setEndpoint(SpotifyConfig.SPOTIFY_API_URL).build();
-    private final ISpotifyService SERVICE = REST_ADAPTER.create(ISpotifyService.class);
+    private final ISpotifyService SPOTIFY_SERVICE = REST_ADAPTER.create(ISpotifyService.class);
 
-    public ISpotifyService getService() {
-        return SERVICE;
+    public ISpotifyService getSpotifyService() {
+        return SPOTIFY_SERVICE;
     }
 }

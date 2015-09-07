@@ -7,7 +7,7 @@ package com.example.stewart.spotifyplayer.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.stewart.spotifyplayer.util.Operation;
+import com.example.stewart.spotifyplayer.util.Evaluation;
 
 public class Artist {
 
@@ -24,6 +24,6 @@ public class Artist {
     }
 
     public Image getDefaultImage() {
-        return Operation.INSTANCE.getOptimalImage(images);
+        return Evaluation.INSTANCE.getSmallestSquareImage(images);
     }
 }
